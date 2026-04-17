@@ -1,5 +1,5 @@
 from expense_manager import add_expense,view_expenses
-from analytics import monthly_summary,category_analysis
+from analytics import monthly_summary,category_analysis,generate_pie_chart
 
 def menu():
     print("\nExpense Tracker")
@@ -7,7 +7,8 @@ def menu():
     print("2.View Expenses")
     print("3.Monthly Summary")
     print("4.Category Analysis")
-    print("5.Exit")
+    print("5.Generate Pie Chart")
+    print("6.Exit")
 
 while True:
     menu()
@@ -22,6 +23,8 @@ while True:
     elif choice=="4":
         category_analysis()
     elif choice=="5":
+        generate_pie_chart()
+    elif choice=="6":
         print("Exiting...")
         break
     else:

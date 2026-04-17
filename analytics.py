@@ -1,5 +1,6 @@
 from expense_manager import load_data
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 def monthly_summary():
     data=load_data()
@@ -57,3 +58,36 @@ def category_analysis():
 
     print(f"\nHighest Spending Category: {max_category}")
     print(f"Amount Spent: ₹{category_totals[max_category]}")
+
+    total_spending = sum(category_totals.values())
+
+    for category,total in category_totals.items():
+        percentage=(total/total_spending)*100
+
+        if percentage>40:
+            print(f"High spending on {category} ({percentage:.1f}%)")
+
+def generate_pie_chart():
+    data = load_data()
+
+    if not data:
+        print("No expenses found.")
+        return
+
+    category_totals = {}
+
+    for expense in data:
+        category = expense["category"]
+        amount = expense["amount"]
+
+        if category in category_totals:
+            category_totals[category] += amount
+        else:
+            category_totals[category] = amount
+
+    categories = list(category_totals.keys())
+    amounts = list(category_totals.values())
+
+    plt.pie(amounts, labels=categories, autopct='%1.1f%%')
+    plt.title("Category-wise Spending")
+    plt.show()
