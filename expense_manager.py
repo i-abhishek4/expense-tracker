@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 
 PATH ="data/expenses.json"
 
@@ -15,19 +16,26 @@ def save_data(data):
         json.dump(data,file,indent=4)
 
 def add_expense():
-    date=input("Enter date(YYYY-MM-DD):")
+    while True:
+        date_input=input("Enter date(DD-MM-YYYY):")
+        try:
+            date_obj=datetime.strptime(date_input,"%d-%m-%Y")
+            date=date_obj.strftime("%d-%m-%Y")
+            break
+        except ValueError:
+            print("Invalid date format.Please use DD-MM-YYYY.")
     category=input("Enter category:")
     amount=float(input("Enter amount:"))
     description=input("Enter description:")
 
-    expense = {
+    expense={
         "date": date,
         "category": category,
         "amount": amount,
         "description": description
     }
 
-    data = load_data()
+    data=load_data()
     data.append(expense)
     save_data(data)
 
