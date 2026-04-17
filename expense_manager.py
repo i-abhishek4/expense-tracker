@@ -40,3 +40,19 @@ def add_expense():
     save_data(data)
 
     print("Expense added successfully!")
+
+def view_expenses():
+    data=load_data()
+
+    if not data:
+        print("No expenses found.")
+        return
+
+    print("\n---All Expenses---")
+
+    for i, expense in enumerate(data, start=1):
+        print(f"\nExpense {i}:")
+        print(f"Date       :{expense['date']}")
+        print(f"Category   :{expense['category']}")
+        print(f"Amount     :₹{expense['amount']}")
+        print(f"Description:{expense['description']}")

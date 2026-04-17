@@ -1,4 +1,4 @@
-from expense_manager import add_expense
+from expense_manager import add_expense,view_expenses
 
 def menu():
     print("\nExpense Tracker")
@@ -15,7 +15,7 @@ while True:
     if choice=="1":
         add_expense()
     elif choice=="2":
-        print("View Expenses selected")
+        view_expenses()
     elif choice=="3":
         print("Monthly Summary selected")
     elif choice=="4":
