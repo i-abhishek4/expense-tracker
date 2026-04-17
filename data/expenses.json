@@ -4,5 +4,11 @@
         "category": "Food",
         "amount": 300.0,
         "description": "Ate biryani for lunch"
+    },
+    {
+        "date": "16-04-2026",
+        "category": "Shopping",
+        "amount": 600.0,
+        "description": "Bought some clothes"
     }
 ]
