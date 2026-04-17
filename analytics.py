@@ -28,3 +28,32 @@ def monthly_summary():
     print(f"\nSummary for {month_input}:")
     print(f"Total Expenses :₹{total}")
     print(f"Number of Transactions :{count}")
+
+def category_analysis():
+    data = load_data()
+
+    if not data:
+        print("No expenses found.")
+        return
+
+    category_totals={}
+
+    for expense in data:
+        category=expense["category"]
+        amount=expense["amount"]
+
+        if category in category_totals:
+            category_totals[category]+=amount
+        else:
+            category_totals[category]=amount
+
+    print("\n---Category-wise Spending---")
+
+    for category,total in category_totals.items():
+        print(f"{category} : ₹{total}")
+
+    
+    max_category = max(category_totals, key=category_totals.get)
+
+    print(f"\nHighest Spending Category: {max_category}")
+    print(f"Amount Spent: ₹{category_totals[max_category]}")

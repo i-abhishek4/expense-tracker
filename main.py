@@ -1,5 +1,5 @@
 from expense_manager import add_expense,view_expenses
-from analytics import monthly_summary
+from analytics import monthly_summary,category_analysis
 
 def menu():
     print("\nExpense Tracker")
@@ -20,7 +20,7 @@ while True:
     elif choice=="3":
         monthly_summary()
     elif choice=="4":
-        print("Category Analysis selected")
+        category_analysis()
     elif choice=="5":
         print("Exiting...")
         break
